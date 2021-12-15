@@ -91,19 +91,9 @@ jobs:
     displayName: 'Install gh' 
 
   - bash:
-      gh repo create $(GITHUB-ORG-NAME)/project-$(PROJECT-NAME)-code -p $(CODE-TEMPLATE) --private --confirm
+      gh repo create $(GITHUB-ORG-NAME)/project-$(PROJECT-NAME) -p $(CODE-TEMPLATE) --private --confirm
     continueOnError: true
-    displayName: 'Create git repo for ml code from template'
-
-  - bash:
-      gh repo create $(GITHUB-ORG-NAME)/project-$(PROJECT-NAME)-controller -p $(CONTROLLER-TEMPLATE) --private --confirm
-    continueOnError: true
-    displayName: 'Create git repo for the controller from template'
-
-  - bash:
-      gh repo create $(GITHUB-ORG-NAME)/project-$(PROJECT-NAME)-iac -p $(IAC-TEMPLATE) --private --confirm
-    continueOnError: true
-    displayName: 'Create git repo for IAC from template'
+    displayName: 'Create git repo for the project from template'
 
   - bash:
       az pipelines delete --id $(az pipelines list 
@@ -116,7 +106,7 @@ jobs:
   - bash:
       az pipelines create --name $(IAC-PIPELINE-NAME)
                           --description 'Pipeline for IAC'
-                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)-iac
+                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)
                           --branch $(IAC-BRANCH)
                           --yml-path $(IAC-YML-PATH)
                           --service-connection $(az devops service-endpoint list --organization $(System.TeamFoundationCollectionUri) --project $(ADO-PROJECT-NAME) -o table |grep $(GITHUB-SERVICE-ENDPOINT-NAME)|cut -d" " -f1)
@@ -136,7 +126,7 @@ jobs:
   - bash:
       az pipelines create --name $(MODEL-TRAINING-PIPELINE-NAME)
                           --description 'Pipeline for Model training'
-                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)-controller
+                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)
                           --branch $(MODEL-TRAINING-BRANCH)
                           --yml-path $(MODEL-TRAINING-YML-PATH)
                           --service-connection $(az devops service-endpoint list --organization $(System.TeamFoundationCollectionUri) --project $(ADO-PROJECT-NAME) -o table |grep $(GITHUB-SERVICE-ENDPOINT-NAME)|cut -d" " -f1)
@@ -156,7 +146,7 @@ jobs:
   - bash:
       az pipelines create --name $(BATCH-SCORING-PIPELINE-NAME)
                           --description 'Pipeline for Model training'
-                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)-controller
+                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)
                           --branch $(BATCH-SCORING-BRANCH)
                           --yml-path $(BATCH-SCORING-YML-PATH)
                           --service-connection $(az devops service-endpoint list --organization $(System.TeamFoundationCollectionUri) --project $(ADO-PROJECT-NAME) -o table |grep $(GITHUB-SERVICE-ENDPOINT-NAME)|cut -d" " -f1)
@@ -164,3 +154,22 @@ jobs:
                           --project $(ADO-PROJECT-NAME)   
                           --skip-first-run true                    
     displayName: 'Create Batch Scoring Pipeline from YAML'
+
+  - bash:
+      az pipelines delete --id $(az pipelines list 
+                          --organization $(System.TeamFoundationCollectionUri) 
+                          --project $(ADO-PROJECT-NAME) -o table |grep $(REALTIME-SCORING-PIPELINE-NAME)|cut -d" " -f1) 
+                          --yes
+    continueOnError: true
+    displayName: 'Delete Realtime Scoring Pipeline if exists'    
+
+  - bash:
+      az pipelines create --name $(REALTIME-SCORING-PIPELINE-NAME)
+                          --description 'Pipeline for realtime scoring'
+                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)
+                          --branch $(REALTIME-SCORING-BRANCH)
+                          --yml-path $(REALTIME-SCORING-YML-PATH)                        
+                          --org $(System.TeamFoundationCollectionUri) 
+                          --project $(ADO-PROJECT-NAME)   
+                          --skip-first-run true                    
+    displayName: 'Create Realtime Scoring Pipeline from YAML'
