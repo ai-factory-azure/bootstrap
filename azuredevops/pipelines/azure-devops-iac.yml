@@ -5,7 +5,7 @@ variables:
 - group: bootstrap-variables-kv
 - template: project-variables.yml
 - name: ADO-PROJECT-NAME
-  value: project-$(PROJECT-NAME)-controller 
+  value: project-$(PROJECT-NAME)
 
 jobs:
 - job: Linux
