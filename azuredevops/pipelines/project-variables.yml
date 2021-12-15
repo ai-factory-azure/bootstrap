@@ -1,0 +1,60 @@
+# Template that lists variables for bootsrap process
+variables:
+
+# Azure DevOps variables
+    # Name for the Azure DevOps project
+  PROJECT-NAME: mnist
+
+# Azure Variables
+    # Name for the Azure Service connection endpoint
+  AZURE-SERVICE-ENDPOINT-NAME: Azure-ARM-Dev
+
+# Github Variables
+    # Org name of the github org
+  GITHUB-ORG-NAME: ai-factory-azure
+    # Org URL for the github org where the github project is / will be hosted
+  GITHUB-ORG-URL: https://github.com/ai-factory-azure
+    # Name for the Github Service connection endpoint
+  GITHUB-SERVICE-ENDPOINT-NAME: Github-Service-Endpoint
+    # URL for the code template
+    # for batch & tabular, choose https://github.com/ai-factory-azure/project-template-tabular-batch-code
+    # for batch & file, choose https://github.com/ai-factory-azure/project-template-file-batch-code
+    # for realtime & tabular, choose https://github.com/ai-factory-azure/project-template-tabular-realtime-code
+    # for realtime & batch, choose https://github.com/ai-factory-azure/project-template-file-realtime-code
+  CODE-TEMPLATE: https://github.com/ai-factory-azure/project-template-file-batch-code
+
+    # URL for the controller template
+    # for batch & tabular, choose https://github.com/ai-factory-azure/project-template-tabular-batch-controller
+    # for batch & file, choose https://github.com/ai-factory-azure/project-template-file-batch-controller
+    # for realtime & tabular, choose https://github.com/ai-factory-azure/project-template-tabular-realtime-controller
+    # for realtime & batch, choose https://github.com/ai-factory-azure/project-template-file-realtime-controller
+  CONTROLLER-TEMPLATE: https://github.com/ai-factory-azure/project-template-file-batch-controller
+# Pipeline variables
+    # Name for the Infrastructure as Code pipeline
+  IAC-PIPELINE-NAME: mnist-iac   
+    # Description for the IAC pipeline
+  IAC-PIPELINE-DESCRIPTION: Pipeline for MNIST Project
+    # Repository url for the IAC repo
+  IAC-TEMPLATE:  https://github.com/ai-factory-azure/templates-iac 
+    # IAC Branch for creating the pipeline
+  IAC-BRANCH:  main    
+    # Pipeline YML path
+  IAC-YML-PATH: pipelines/iac-create-environment-pipeline-arm.yml
+
+    # Name for the model training pipeline
+  MODEL-TRAINING-PIPELINE-NAME: mnist-training   
+    # Description for the pipeline
+  MODEL-TRAINING-PIPELINE-DESCRIPTION: Training Pipeline for MNIST Project
+    # Branch for creating the pipeline
+  MODEL-TRAINING-BRANCH:  main    
+    # Pipeline YML path
+  MODEL-TRAINING-YML-PATH: devops-pipelines/deploy-model-training-pipeline.yml
+
+    # Name for the batch scoring pipeline
+  BATCH-SCORING-PIPELINE-NAME: mnist-batch-scoring   
+    # Description for the pipeline
+  BATCH-SCORING-PIPELINE-DESCRIPTION: Batch scoring Pipeline for MNIST Project
+    # Branch for creating the pipeline
+  BATCH-SCORING-BRANCH:  main    
+    # Pipeline YML path
+  BATCH-SCORING-YML-PATH: devops-pipelines/deploy-model-batch-scoring.yml
