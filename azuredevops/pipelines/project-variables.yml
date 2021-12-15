@@ -33,7 +33,7 @@ variables:
     # IAC Branch for creating the pipeline
   IAC-BRANCH:  main    
     # Pipeline YML path
-  IAC-YML-PATH: pipelines/iac-create-environment-pipeline-arm.yml
+  IAC-YML-PATH: iac/pipelines/iac-create-environment-pipeline-arm.yml
 
     # Name for the model training pipeline
   MODEL-TRAINING-PIPELINE-NAME: mnist-training   
@@ -42,7 +42,7 @@ variables:
     # Branch for creating the pipeline
   MODEL-TRAINING-BRANCH:  main    
     # Pipeline YML path
-  MODEL-TRAINING-YML-PATH: devops-pipelines/deploy-model-training-pipeline.yml
+  MODEL-TRAINING-YML-PATH: controller/devops-pipelines/deploy-model-training-pipeline.yml
 
     # Name for the batch scoring pipeline
   BATCH-SCORING-PIPELINE-NAME: mnist-batch-scoring   
@@ -51,7 +51,7 @@ variables:
     # Branch for creating the pipeline
   BATCH-SCORING-BRANCH:  main    
     # Pipeline YML path
-  BATCH-SCORING-YML-PATH: devops-pipelines/deploy-model-batch-scoring.yml
+  BATCH-SCORING-YML-PATH: controller/devops-pipelines/deploy-model-batch-scoring.yml
   
       # Name for the realtime scoring pipeline
   REALTIME-SCORING-PIPELINE-NAME: mnist-realtime-scoring   
