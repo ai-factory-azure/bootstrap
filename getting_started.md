@@ -24,21 +24,16 @@ Create the following repos in your GitHub organization via "Use this template" c
 
 1. [Bootstrap](https://github.com/ai-factory-azure/bootstrap)
 2. [MLOps templates](https://github.com/ai-factory-azure/templates-mlops)
-3. [Code template](https://github.com/ai-factory-azure/project-template-file-batch-code)
-4. [Controller template](https://github.com/ai-factory-azure/project-template-file-batch-controller)
-5. [Infrastructure as Code template](https://github.com/ai-factory-azure/templates-iac)
+3. [Code template](https://github.com/ai-factory-azure/project-template-file)
 
-In the `project-template-file-batch-controller` repo, replace the string `ai-factory-azure` with the name of your GitHub org (or username) in the files:
-* `devops-pipelines/deploy-model-training-pipeline.yml` and 
-* `devops-pipelines/deploy-model-batch-scoring.yml`
+In the `project-template-file` repo, replace the string `ai-factory-azure` with the name of your GitHub org (or username) in the following files:
+* `controller/devops-pipelines/deploy-model-training-pipeline.yml`
+* `controller/devops-pipelines/deploy-model-batch-scoring.yml`
+* `controller/devops-pipelines/deploy-model-to-aks.yml`
 
 ### 2.1 GitHub Settings
 
-Make the following repos template repositories by ticking the "Template Repository" option in the repos' settings:
-
-* `project-template-file-batch-code`
-* `project-template-file-batch-controller`
-* `templates-iac`
+Make the `project-template-file` repo a template repository by ticking the "Template Repository" option in the repos' settings:
 
 ![image](https://user-images.githubusercontent.com/26466075/132330317-528a2e71-7371-46c8-870e-10349a9fefcc.png)
 
