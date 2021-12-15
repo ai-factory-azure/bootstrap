@@ -168,7 +168,8 @@ jobs:
                           --description 'Pipeline for realtime scoring'
                           --repository $(GITHUB-ORG-URL)/$(ADO-PROJECT-NAME)
                           --branch $(REALTIME-SCORING-BRANCH)
-                          --yml-path $(REALTIME-SCORING-YML-PATH)                        
+                          --yml-path $(REALTIME-SCORING-YML-PATH)
+                          --service-connection $(az devops service-endpoint list --organization $(System.TeamFoundationCollectionUri) --project $(ADO-PROJECT-NAME) -o table |grep $(GITHUB-SERVICE-ENDPOINT-NAME)|cut -d" " -f1)
                           --org $(System.TeamFoundationCollectionUri) 
                           --project $(ADO-PROJECT-NAME)   
                           --skip-first-run true                    
