@@ -3,7 +3,7 @@ variables:
 
 # Azure DevOps variables
     # Name for the Azure DevOps project
-  PROJECT-NAME: mnist
+  PROJECT-NAME: mnist-01
 
 # Azure Variables
     # Name for the Azure Service connection endpoint
@@ -21,14 +21,8 @@ variables:
     # for batch & file, choose https://github.com/ai-factory-azure/project-template-file-batch-code
     # for realtime & tabular, choose https://github.com/ai-factory-azure/project-template-tabular-realtime-code
     # for realtime & batch, choose https://github.com/ai-factory-azure/project-template-file-realtime-code
-  CODE-TEMPLATE: https://github.com/ai-factory-azure/project-template-file-batch-code
+  CODE-TEMPLATE: https://github.com/ai-factory-azure/project-template-file
 
-    # URL for the controller template
-    # for batch & tabular, choose https://github.com/ai-factory-azure/project-template-tabular-batch-controller
-    # for batch & file, choose https://github.com/ai-factory-azure/project-template-file-batch-controller
-    # for realtime & tabular, choose https://github.com/ai-factory-azure/project-template-tabular-realtime-controller
-    # for realtime & batch, choose https://github.com/ai-factory-azure/project-template-file-realtime-controller
-  CONTROLLER-TEMPLATE: https://github.com/ai-factory-azure/project-template-file-batch-controller
 # Pipeline variables
     # Name for the Infrastructure as Code pipeline
   IAC-PIPELINE-NAME: mnist-iac   
@@ -58,3 +52,12 @@ variables:
   BATCH-SCORING-BRANCH:  main    
     # Pipeline YML path
   BATCH-SCORING-YML-PATH: devops-pipelines/deploy-model-batch-scoring.yml
+  
+      # Name for the realtime scoring pipeline
+  REALTIME-SCORING-PIPELINE-NAME: mnist-realtime-scoring   
+  # Description for the pipeline
+  REALTIME-SCORING-PIPELINE-DESCRIPTION: Realtime scoring Pipeline for MNIST Project
+  # Branch for creating the pipeline
+  REALTIME-SCORING-BRANCH:  main    
+  # Pipeline YML path
+  REALTIME-SCORING-YML-PATH: controller/devops-pipelines/deploy-model-to-aks.yml
