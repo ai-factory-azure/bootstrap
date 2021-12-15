@@ -106,7 +106,7 @@ jobs:
   - bash:
       az pipelines create --name $(IAC-PIPELINE-NAME)
                           --description 'Pipeline for IAC'
-                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)
+                          --repository $(GITHUB-ORG-URL)/$(ADO-PROJECT-NAME)
                           --branch $(IAC-BRANCH)
                           --yml-path $(IAC-YML-PATH)
                           --service-connection $(az devops service-endpoint list --organization $(System.TeamFoundationCollectionUri) --project $(ADO-PROJECT-NAME) -o table |grep $(GITHUB-SERVICE-ENDPOINT-NAME)|cut -d" " -f1)
@@ -126,7 +126,7 @@ jobs:
   - bash:
       az pipelines create --name $(MODEL-TRAINING-PIPELINE-NAME)
                           --description 'Pipeline for Model training'
-                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)
+                          --repository $(GITHUB-ORG-URL)/$(ADO-PROJECT-NAME)
                           --branch $(MODEL-TRAINING-BRANCH)
                           --yml-path $(MODEL-TRAINING-YML-PATH)
                           --service-connection $(az devops service-endpoint list --organization $(System.TeamFoundationCollectionUri) --project $(ADO-PROJECT-NAME) -o table |grep $(GITHUB-SERVICE-ENDPOINT-NAME)|cut -d" " -f1)
@@ -146,7 +146,7 @@ jobs:
   - bash:
       az pipelines create --name $(BATCH-SCORING-PIPELINE-NAME)
                           --description 'Pipeline for Model training'
-                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)
+                          --repository $(GITHUB-ORG-URL)/$(ADO-PROJECT-NAME)
                           --branch $(BATCH-SCORING-BRANCH)
                           --yml-path $(BATCH-SCORING-YML-PATH)
                           --service-connection $(az devops service-endpoint list --organization $(System.TeamFoundationCollectionUri) --project $(ADO-PROJECT-NAME) -o table |grep $(GITHUB-SERVICE-ENDPOINT-NAME)|cut -d" " -f1)
@@ -166,7 +166,7 @@ jobs:
   - bash:
       az pipelines create --name $(REALTIME-SCORING-PIPELINE-NAME)
                           --description 'Pipeline for realtime scoring'
-                          --repository $(GITHUB-ORG-URL)/project-$(PROJECT-NAME)
+                          --repository $(GITHUB-ORG-URL)/$(ADO-PROJECT-NAME)
                           --branch $(REALTIME-SCORING-BRANCH)
                           --yml-path $(REALTIME-SCORING-YML-PATH)                        
                           --org $(System.TeamFoundationCollectionUri) 
