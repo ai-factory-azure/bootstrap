@@ -60,9 +60,9 @@ Go to the Azure DevOps organization's settings and grant "Create new projects" p
 Create a new pipeline in Azure DevOps as per the steps below:
 
 1. Pipelines -> New Pipeline -> GitHub (YAML)
-1. Choose the `bootstrap` repo you created in step 2 (If your repo is not visible in the default view, then click on the dropdown under Select a repository and choose "All repositories". If it is still not visible, then click on they hyperlink in the message "If you can't find a repository, make sure you provide access." at the bottom of the page and provide access to all repos your GitHub organization via this option)
-1. Choose "Existing Azure Pipelines YAML File" option and then select the file `/azuredevops/pipelines/azure-devops-iac.yml`
-1. Save the pipeline (do not run it yet)
+2. Choose the `bootstrap` repo you created in step 2 (If your repo is not visible in the default view, then click on the dropdown under Select a repository and choose "All repositories". If it is still not visible, then click on they hyperlink in the message "If you can't find a repository, make sure you provide access." at the bottom of the page and provide access to all repos your GitHub organization via this option)
+3. Choose "Existing Azure Pipelines YAML File" option and then select the file `/azuredevops/pipelines/azure-devops-iac.yml`
+4. Save the pipeline (do not run it yet)
 
 ## 6. Update parameters for the pipeline
 
@@ -71,6 +71,20 @@ Go to the file named `/azuredevops/pipelines/project-variables.yml` in the `boot
 ## 7. Pipeline Run
 
 Once you commit the `project-variables.yml` file, it should run the pipeline we created in step 5. Please note that the first run of the pipeline will request for permission to access the Azure Subscription in order to access the Key Vault. 
+
+### 8. Run the project IAC pipeline
+
+Navigate to "iac/pipelines/iac-variables.yml" and update the variables to provide parameters for the ARM template deployment of the Azure Machine Learning workspace and associated resources. 
+
+Once you commit the file, the IAC pipeline should get triggered.
+
+### 9 Run the project training pipeline
+
+Navigate to controller/controller-config.yml and update the workspace, resource group name. The remaining settings can be left unchanged for the initial deployment of the sample project. These settings can be changed subsequently once the Data Science code has been written. 
+
+### 10 Run the project Batch Scoring / AKS deployment pipeline
+
+Depending on the use case, run the Batch Scoring pipeline for batch scenarios and AKS deployment pipeline for realtime scenarios. 
 
 Some notes:
 
