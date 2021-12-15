@@ -72,17 +72,17 @@ Go to the file named `/azuredevops/pipelines/project-variables.yml` in the `boot
 
 Once you commit the `project-variables.yml` file, it should run the pipeline we created in step 5. Please note that the first run of the pipeline will request for permission to access the Azure Subscription in order to access the Key Vault. 
 
-### 8. Run the project IAC pipeline
+## 8. Run the project IAC pipeline
 
 Navigate to "iac/pipelines/iac-variables.yml" and update the variables to provide parameters for the ARM template deployment of the Azure Machine Learning workspace and associated resources. 
 
 Once you commit the file, the IAC pipeline should get triggered.
 
-### 9 Run the project training pipeline
+## 9. Run the project training pipeline
 
 Navigate to controller/controller-config.yml and update the workspace, resource group name. The remaining settings can be left unchanged for the initial deployment of the sample project. These settings can be changed subsequently once the Data Science code has been written. 
 
-### 10 Run the project Batch Scoring / AKS deployment pipeline
+## 10. Run the project Batch Scoring / AKS deployment pipeline
 
 Depending on the use case, run the Batch Scoring pipeline for batch scenarios and AKS deployment pipeline for realtime scenarios. 
 
