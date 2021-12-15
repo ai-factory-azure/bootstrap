@@ -53,7 +53,7 @@ variables:
     # Pipeline YML path
   BATCH-SCORING-YML-PATH: controller/devops-pipelines/deploy-model-batch-scoring.yml
   
-      # Name for the realtime scoring pipeline
+  # Name for the realtime scoring pipeline
   REALTIME-SCORING-PIPELINE-NAME: mnist-realtime-scoring   
   # Description for the pipeline
   REALTIME-SCORING-PIPELINE-DESCRIPTION: Realtime scoring Pipeline for MNIST Project
