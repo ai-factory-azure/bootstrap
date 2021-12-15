@@ -3,7 +3,7 @@ variables:
 
 # Azure DevOps variables
     # Name for the Azure DevOps project
-  PROJECT-NAME: mnist-01
+  PROJECT-NAME: mnist-02
 
 # Azure Variables
     # Name for the Azure Service connection endpoint
